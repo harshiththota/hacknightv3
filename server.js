@@ -25,15 +25,22 @@ app.get('/register', (req, res) => {
 
 // define a simple route
 app.post('/getUpdate', (req, res) => {
-  console.log('req : ', req.body);
   const data = req.body;
   return predictionService.predict(data)
     .then((result) => {
-      console.log('result : ', result);
-      return smsService.sendSMS(data, result)
+      console.log('data info : ', data.infoValue);
+      if (data.infoValue === 'sms') {
+        console.log('inside sms');
+        return smsService.sendSMS(data, result)
+          .then(() => {
+            res.json({ "message": "Operation executed successfully" });
+          });
+      }
+
+      return smsService.sendCall(data)
         .then(() => {
           res.json({ "message": "Operation executed successfully" });
-        })
+        });
     });
 });
 
