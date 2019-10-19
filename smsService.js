@@ -36,3 +36,20 @@ exports.sendSMS = function (inputData, result) {
     });
   });
 };
+
+exports.sendCall = function (inputData) {
+  const data = {
+    caller: inputData.phone,
+  };
+
+  const url = `https://voice.solutionsinfini.com/api/v1/?method=dial.click2call&format=xml&caller=${data.caller}&receiver=ivr:57342&api_key=Ad9b6d364b7d3fa47d382ec64efc043fd`;
+
+  return new Promise(function (resolve, reject) {
+    return request.get(url, function (err, res, body) {
+      if (err) {
+        reject(err);
+      }
+      resolve(body);
+    });
+  });
+};
