@@ -1,28 +1,15 @@
 jQuery(document).ready(function() {
-
-		// jQuery('#start_Date').datepicker({
-		//    format: "mm/dd/yy",
-		//    startDate: new Date()
-		// });
-
-		// jQuery('#end_Date').datepicker({
-		//    format: "mm/dd/yy",
-		//    startDate: new Date(),
-		//    endDate: '+22d'
-		// }); 
-
-
 	jQuery('#stock_submit_btn').click(function() {
 
 		var name = jQuery('#stock_name').val().trim();
 	    var phone = jQuery('#phone_number').val();
 	    var stockmaxprice = jQuery('#stock_max_value').val();
 	    var stockminprice = jQuery('#stock_min_value').val();
-	    var fromdate = jQuery('#startDate').val();
-	    var todate = jQuery('#endDate').val();
+			var infoValue = jQuery('input:radio[name=sendinfo]:checked').val();
 	    
 	    var validname = /^[a-zA-Z\s]*$/.test(name) && name.length > 1 ;
-	    var validnumber = /^\d{10}$/;
+			var validnumber = /^\d{10}$/;
+			var validprice = /^\d{1}$/;
 	  
 
 		var error = [];
@@ -35,18 +22,23 @@ jQuery(document).ready(function() {
 	    }
 
 	    if(phone.length <= 0) {
-				error.push({'type':'error_email','msg':"Phone Number is required."});
+				error.push({'type':'error_phone','msg':"Phone Number is required."});
 		}else if(!validnumber){
-			error.push({'type':'error_email','msg':"Enter valid Phone number"});
+			error.push({'type':'error_phone','msg':"Enter valid Phone number"});
 		}
 
 		if(stockmaxprice.length <= 0) {
-			error.push({'type':'error_email','msg':"Stock maximum price is required."});
+			error.push({'type':'error_stockmaxprice','msg':"Stock maximum price is required."});
 		}
 
 		if(stockminprice.length <= 0) {
-			error.push({'type':'error_email','msg':"Stock minimum price is required."});
+			error.push({'type':'error_stockminprice','msg':"Stock minimum price is required."});
 		}
+
+		if (!infoValue) {
+			error.push({ 'type': 'error_infovalue', 'msg': "Select Service to get infomation." });
+		}
+
 
 		// var dataString = 'name='+ name + '&phone='+ phone + '&stockmaxprice='+ stockmaxprice + '&stockminprice='+ stockminprice;
 		var data = {
@@ -54,6 +46,7 @@ jQuery(document).ready(function() {
 			phone: phone,
 			stockmaxprice: stockmaxprice,
 			stockminprice: stockminprice,
+			infoValue: infoValue,
 		};
 
 	    jQuery('.clear_error').text('');
