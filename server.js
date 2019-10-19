@@ -27,16 +27,13 @@ app.get('/register', (req, res) => {
 app.post('/getUpdate', (req, res) => {
   console.log('req : ', req.body);
   const data = req.body;
-  const MAX = 100;
   return predictionService.predict(data)
     .then((result) => {
       console.log('result : ', result);
-      if (result >= MAX) {
-        return smsService.sendSMS(data)
-          .then(() => {
-            res.json({ "message": "Operation executed successfully" });
-          })
-      }
+      return smsService.sendSMS(data, result)
+        .then(() => {
+          res.json({ "message": "Operation executed successfully" });
+        })
     });
 });
 

@@ -1,13 +1,27 @@
 const request = require('request');
+const _ = require('lodash');
 
 const API_KEY = 'A91862b9c45ff3872032bb46332b1be86';
 const SENDER = 'HACKAT';
 const METHOD = 'sms';
 
-exports.sendSMS = function (inputData) {
+exports.createContent = function (result) {
+  let message = '';
+
+  _.forEach(result, (value, key) => {
+    message += key;
+    message += '  :  ',
+    message += value;
+    message += '\n';
+  });
+
+  return message;
+};
+
+exports.sendSMS = function (inputData, result) {
   const data = {
     method: METHOD,
-    message: 'hello',
+    message: exports.createContent(result),
     to: inputData.phone,
     sender: SENDER,
   };
