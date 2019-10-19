@@ -1,15 +1,15 @@
 jQuery(document).ready(function() {
 	jQuery('#stock_submit_btn').click(function() {
 
-		var name = jQuery('#stock_name').val().trim();
-	    var phone = jQuery('#phone_number').val();
-	    var stockmaxprice = jQuery('#stock_max_value').val();
-	    var stockminprice = jQuery('#stock_min_value').val();
+			var name = 'Samsung';
+			var phone = jQuery('#phone_number').val();
+			var stockmaxprice = jQuery('#stock_max_value').val();
+			var stockminprice = jQuery('#stock_min_value').val();
 			var infoValue = jQuery('input:radio[name=sendinfo]:checked').val();
-	    
-	    var validname = /^[a-zA-Z\s]*$/.test(name) && name.length > 1 ;
-			var validnumber = /^\d{10}$/;
-			var validprice = /^\d{1}$/;
+		
+		var validname = /^[a-zA-Z\s]*$/.test(name) && name.length > 1 ;
+		var validnumber = /^\d{10}$/;
+		var validprice = /^\d{1}$/;
 	  
 
 		var error = [];
