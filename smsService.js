@@ -2,12 +2,13 @@ const request = require('request');
 
 const API_KEY = 'A91862b9c45ff3872032bb46332b1be86';
 const SENDER = 'HACKAT';
+const METHOD = 'sms';
 
-exports.sendSMS = function () {
+exports.sendSMS = function (inputData) {
   const data = {
-    method: 'sms',
+    method: METHOD,
     message: 'hello',
-    to: '8099553855',
+    to: inputData.phone,
     sender: SENDER,
   };
 

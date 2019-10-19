@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="#" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="mainstyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- 	<script async src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+	<script async src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script async src="main.js"></script>
+</head>
+<body>
+<form method="POST" id="getstockresult">
+  <div class="container">
+    <h1>Start Stock Prediction Today</h1>
+    <hr>
+
+    <input class="stockinput" type="text" name="stockname" placeholder="Enter Stock Name" id="stock_name">
+
+    <input class="stockinput" type="text" name="phonenumber" placeholder="Enter Phone Number" id="phone_number">
+
+    <input class="stockinput" type="text" placeholder="Enter Maximum value" name="stock_max_value" id="stock_max_value">
+
+    <input class="stockinput" type="text" placeholder="Enter Minimum value" name="stock_min_value" id="stock_min_value">
+
+    <!-- <input type="text" class="stockinput" id="start_Date" placeholder="Enter From Date"> -->
+    
+    <!-- <input type="text" class="stockinput" id="end_Date" placeholder="Enter To Date"> -->
+
+    <button type="button" class="stockbtn" id="stock_submit_btn" name="submit">Get Results</button>
+  </div>
+</form>
+</body>
+</html>

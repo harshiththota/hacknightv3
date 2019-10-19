@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const smsService = require('./smsService.js')
 const predictionService = require('./predictionService.js');
+const path = require('path');
 
 // create express app
 const app = express();
@@ -16,20 +17,36 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
+app.use(express.static('.'));
+
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname + '/index.html'));
+});
+
 // define a simple route
 app.post('/getUpdate', (req, res) => {
+  console.log('req : ', req.body);
+  const data = req.body;
   const MAX = 100;
-  return predictionService.predict()
+  return predictionService.predict(data)
     .then((result) => {
       console.log('result : ', result);
       if (result >= MAX) {
-        return smsService.sendSMS()
+        return smsService.sendSMS(data)
           .then(() => {
             res.json({ "message": "Operation executed successfully" });
           })
       }
     });
 });
+
+app.get('/temp', (req, res) => {
+  return predictionService.predict()
+    .then((result) => {
+      console.log('result : ', result);
+      res.json({ "message": "Operation executed successfully" });
+    });
+})
 
 // listen for requests
 app.listen(port, () => {
