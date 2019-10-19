@@ -4,13 +4,12 @@ body {
   margin: 0 auto;
 }
 
-/* Add padding to containers */
-.container {
-  padding: 16px;
-  background-color: white;
-  width: 50%;
+.stockform {
+  margin: 10px;
+  padding: 10px;
+  float: left;
   text-align: center;
-  justify-content: center;
+  box-shadow: 2px 2px 2px 2px; 
 }
 
 /* Full-width input fields */
@@ -44,10 +43,25 @@ hr {
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  text-align: center;
+  justify-content: center;
+  font-weight: 500;
 }
 
 .stockbtn:hover {
   color: white;
   background-color: black;
-  opacity: 0.2;
 }
+
+.formlabel {
+  float: left;
+  font-weight: 500;
+}
+
+/*.gtco-banner-area .card .card-img-top {
+  max-width: 430px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-right: 0;
+  border: none;
+}*/
