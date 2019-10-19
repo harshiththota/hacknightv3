@@ -1,6 +1,8 @@
 // import modules
 const express = require('express');
 const bodyParser = require('body-parser');
+const smsService = require('./smsService.js')
+const predictionService = require('./predictionService.js');
 
 // create express app
 const app = express();
@@ -15,8 +17,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // define a simple route
-app.get('/getUpdate', (req, res) => {
-  res.json({ "message": "Called route" });
+app.post('/getUpdate', (req, res) => {
+  const MAX = 100;
+  return predictionService.predict()
+    .then((result) => {
+      console.log('result : ', result);
+      if (result >= MAX) {
+        return smsService.sendSMS()
+          .then(() => {
+            res.json({ "message": "Operation executed successfully" });
+          })
+      }
+    });
 });
 
 // listen for requests
