@@ -21,7 +21,7 @@
     "buffered-spawn": "^3.3.2",
     "express": "^4.17.1",
     "https": "^1.0.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "request": "^2.88.0"
   }
