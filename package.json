@@ -19,7 +19,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "buffered-spawn": "^3.3.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "https": "^1.0.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
